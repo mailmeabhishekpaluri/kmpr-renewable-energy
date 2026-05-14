@@ -17,12 +17,13 @@ type CaseStudy = {
 
 async function getPublicCaseStudies(): Promise<CaseStudy[]> {
   try {
-    return sanityClient.fetch(
+    return await sanityClient.fetch(
       `*[_type == "caseStudy" && isPublic == true && status == "Active"]{
         _id, clientName, sector, location, logoUrl
       }`
     );
   } catch {
+    // Project not yet configured — degrade gracefully
     return [];
   }
 }
