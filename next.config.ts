@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Required for the embedded Sanity Studio
+  transpilePackages: ["sanity", "styled-components"],
 };
 
 export default nextConfig;
