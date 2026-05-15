@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import {
+  SlotIndicatorPill,
+  SlotCTA,
+  SlotMobileCTA,
+} from "@/components/superpowers/SlotIndicatorClient";
 
 const NAV = [
   { label: "Home", href: "/" },
@@ -19,7 +24,12 @@ const NAV = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Header() {
+type HeaderProps = {
+  slotsFilled?: number;
+  slotsTotal?: number;
+};
+
+export default function Header({ slotsFilled = 3, slotsTotal = 7 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [modelsOpen, setModelsOpen] = useState(false);
@@ -117,14 +127,10 @@ export default function Header() {
             )}
           </nav>
 
-          {/* CTA + hamburger */}
+          {/* Slot pill + CTA + hamburger */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden md:inline-flex items-center bg-kmpr-teal hover:bg-kmpr-teal-dark text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
-            >
-              Check My Feasibility
-            </Link>
+            <SlotIndicatorPill filled={slotsFilled} total={slotsTotal} />
+            <SlotCTA filled={slotsFilled} total={slotsTotal} />
             <button
               className="md:hidden text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors"
               onClick={() => setMobileOpen((v) => !v)}
@@ -191,13 +197,11 @@ export default function Header() {
               )
             )}
           </nav>
-          <Link
-            href="/contact"
+          <SlotMobileCTA
+            filled={slotsFilled}
+            total={slotsTotal}
             onClick={() => setMobileOpen(false)}
-            className="block text-center bg-kmpr-teal hover:bg-kmpr-teal-dark text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors"
-          >
-            Check My Feasibility
-          </Link>
+          />
         </div>
       </div>
     </>
