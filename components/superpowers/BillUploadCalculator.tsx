@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { useDropzone } from "react-dropzone";
 import { useSearchParams } from "next/navigation";
 import type { ExtractedBill } from "@/app/api/extract-bill/route";
@@ -114,7 +115,7 @@ function EditingForm({
               type={type}
               step={step}
               min={min}
-              value={(vals as Record<string, unknown>)[id] ?? ""}
+              value={(vals as Record<string, unknown>)[id] as string | number ?? ""}
               onChange={(e) =>
                 onChange({
                   [id]: type === "number"

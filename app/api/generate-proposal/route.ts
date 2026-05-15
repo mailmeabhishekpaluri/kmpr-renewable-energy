@@ -6,6 +6,9 @@ import fs from "fs";
 import path from "path";
 import { ProposalDocument, type ProposalData, type SavingsRow } from "@/lib/proposalPdf";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 // ─── Input type ───────────────────────────────────────────────────────────────
 
 type ProposalInput = {
@@ -119,8 +122,9 @@ export async function POST(req: NextRequest) {
       };
       const table = buildTable(kwhPerMonth, currentTariff);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       pdfBuffer = await renderToBuffer(
-        React.createElement(ProposalDocument, { data, table })
+        React.createElement(ProposalDocument, { data, table }) as any
       );
 
       writeCache(key, pdfBuffer);
@@ -131,7 +135,7 @@ export async function POST(req: NextRequest) {
       sendEmail(email, company, pdfBuffer, slug).catch(() => {});
     }
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(new Uint8Array(pdfBuffer), {
       status: 200,
       headers: {
         "Content-Type":        "application/pdf",

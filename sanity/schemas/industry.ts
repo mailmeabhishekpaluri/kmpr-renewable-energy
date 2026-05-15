@@ -28,6 +28,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "headlineStat",
+      title: "Headline Stat",
+      type: "string",
+      description: "e.g. 'Average steel plant saves Rs. 3–5 crore/year'",
+    }),
+    defineField({
       name: "featuredCaseStudy",
       title: "Featured Case Study",
       type: "reference",

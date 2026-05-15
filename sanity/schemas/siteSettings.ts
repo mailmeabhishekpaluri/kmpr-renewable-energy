@@ -4,8 +4,6 @@ export default defineType({
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
-  // Singleton — prevent creating multiple documents
-  __experimental_actions: ["update", "publish"],
   fields: [
     defineField({
       name: "phoneNumbers",
