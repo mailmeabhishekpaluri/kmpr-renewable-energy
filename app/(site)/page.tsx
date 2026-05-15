@@ -2,7 +2,7 @@ import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 import LiveGenerationCounter from "@/components/superpowers/LiveGenerationCounter";
-import QualifyTest from "@/components/QualifyTest";
+import QualifyTest from "@/components/superpowers/QualifyTest";
 import FeasibilityForm from "@/components/FeasibilityForm";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
