@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
-import ConversationalForm from "@/components/ConversationalForm";
+import ConversationalForm from "@/components/superpowers/ConversationalForm";
 import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
 import { sanityClient } from "@/lib/sanity";
 
@@ -108,13 +108,6 @@ export default async function ContactPage() {
             <div className="w-full lg:w-[60%]">
               <FadeIn>
                 <div className="bg-white rounded-2xl border border-kmpr-teal/15 p-8 sm:p-10">
-                  <p className="text-kmpr-teal text-xs font-semibold uppercase tracking-widest mb-2">
-                    Feasibility Enquiry
-                  </p>
-                  <h2 className="text-2xl font-bold text-kmpr-navy mb-7">
-                    Tell us about your facility
-                  </h2>
-
                   {/* ConversationalForm reads useSearchParams — must be in Suspense */}
                   <Suspense fallback={<FormSkeleton />}>
                     <ConversationalForm />
