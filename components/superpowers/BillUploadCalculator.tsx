@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import type { ExtractedBill } from "@/app/api/extract-bill/route";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -138,23 +138,65 @@ function EditingForm({
   );
 }
 
+type ProposalStatus = "idle" | "collecting" | "generating" | "done" | "error";
+
 function SavingsPanel({
   vals,
+  proposalCompany,
+  proposalDistrict,
+  proposalModel,
   onReset,
 }: {
   vals: FormVals;
+  proposalCompany: string;
+  proposalDistrict: string;
+  proposalModel: string;
   onReset: () => void;
 }) {
-  const { monthly, annual, cumulative25yr } = computeSavings(
-    vals.kwh_per_month,
-    vals.tariff_per_unit
-  );
+  const { monthly, annual, cumulative25yr } = computeSavings(vals.kwh_per_month, vals.tariff_per_unit);
+  const [pStatus, setPStatus] = useState<ProposalStatus>("idle");
+  const [email, setEmail]     = useState("");
+  const [pError, setPError]   = useState<string | null>(null);
 
   const rows = [
-    { label: "Monthly saving",      value: rupeeFmt.format(Math.round(monthly)),       highlight: false },
-    { label: "Annual saving",       value: rupeeFmt.format(Math.round(annual)),        highlight: false },
+    { label: "Monthly saving",      value: rupeeFmt.format(Math.round(monthly)),        highlight: false },
+    { label: "Annual saving",       value: rupeeFmt.format(Math.round(annual)),         highlight: false },
     { label: "25-year cumulative",  value: rupeeFmt.format(Math.round(cumulative25yr)), highlight: true  },
   ];
+
+  const handleGenerateProposal = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPStatus("generating");
+    setPError(null);
+    try {
+      const res = await fetch("/api/generate-proposal", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({
+          company:        proposalCompany || "Your Company",
+          district:       proposalDistrict || "Anantapur",
+          kwhPerMonth:    vals.kwh_per_month,
+          currentTariff:  vals.tariff_per_unit,
+          preferredModel: (proposalModel as "PPA" | "BOOT" | "Not sure") || "Not sure",
+          email,
+        }),
+      });
+      if (!res.ok) throw new Error("Generation failed");
+      const blob     = await res.blob();
+      const url      = URL.createObjectURL(blob);
+      const a        = document.createElement("a");
+      a.href         = url;
+      a.download     = `KMPR_Proposal_${proposalCompany || "Facility"}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setPStatus("done");
+    } catch {
+      setPError("Failed to generate the proposal. Please try again or contact us directly.");
+      setPStatus("error");
+    }
+  };
 
   return (
     <div>
@@ -184,7 +226,7 @@ function SavingsPanel({
             key={row.label}
             className={`flex items-center justify-between px-6 py-4 ${
               i < rows.length - 1 ? "border-b border-kmpr-teal/10" : ""
-            } ${row.highlight ? "bg-kmpr-teal/8" : ""}`}
+            } ${row.highlight ? "bg-kmpr-teal/10" : ""}`}
           >
             <p className="text-kmpr-muted text-sm font-medium">{row.label}</p>
             <p className={`tabular text-lg font-bold ${row.highlight ? "text-kmpr-teal" : "text-kmpr-navy"}`}>
@@ -198,20 +240,85 @@ function SavingsPanel({
         * 25-year projection assumes 10%/year Discom escalation. KMPR tariff is contractually fixed at ₹{KMPR_RATE}/unit.
       </p>
 
-      {/* Proposal CTA */}
-      <div className="bg-kmpr-navy rounded-2xl p-6 text-center mb-4">
-        <p className="text-white font-bold text-base mb-1">
-          Want this as a branded proposal you can send to your CFO?
-        </p>
-        <p className="text-white/50 text-xs mb-4">
-          We'll generate a PDF with your facility's numbers, KMPR's credentials, and the term sheet.
-        </p>
-        <Link
-          href="/contact?reason=proposal"
-          className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-        >
-          Generate my proposal →
-        </Link>
+      {/* Proposal section */}
+      <div className="bg-kmpr-navy rounded-2xl p-6 mb-4">
+        {pStatus === "idle" && (
+          <>
+            <p className="text-white font-bold text-base mb-1">
+              Want this as a branded proposal you can send to your CFO?
+            </p>
+            <p className="text-white/50 text-xs mb-4">
+              12-page PDF with your facility's numbers, KMPR's credentials, term sheet, and 25-year savings table.
+            </p>
+            <button
+              onClick={() => setPStatus("collecting")}
+              className="bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+            >
+              Generate my CFO proposal →
+            </button>
+          </>
+        )}
+
+        {pStatus === "collecting" && (
+          <form onSubmit={handleGenerateProposal}>
+            <p className="text-white font-bold text-sm mb-3">
+              Where should we send the proposal?
+            </p>
+            <input
+              type="email"
+              required
+              placeholder="your@company.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-kmpr-teal transition-colors mb-3"
+            />
+            <p className="text-white/40 text-xs mb-4">
+              We'll email the PDF to you and to sales@kmprpower.in for follow-up.
+            </p>
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                className="flex-1 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-5 py-3 rounded-full text-sm transition-colors"
+              >
+                Generate & download PDF →
+              </button>
+              <button
+                type="button"
+                onClick={() => setPStatus("idle")}
+                className="px-4 py-3 text-white/50 hover:text-white text-xs transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        )}
+
+        {pStatus === "generating" && (
+          <div className="text-center py-4">
+            <div className="w-10 h-10 rounded-full border-2 border-kmpr-teal border-t-transparent animate-spin mx-auto mb-3" />
+            <p className="text-white text-sm font-medium">Generating your 12-page proposal…</p>
+            <p className="text-white/40 text-xs mt-1">Usually takes 10–20 seconds</p>
+          </div>
+        )}
+
+        {pStatus === "done" && (
+          <div className="text-center py-2">
+            <p className="text-emerald-400 font-bold text-sm mb-1">✓ Proposal downloaded</p>
+            <p className="text-white/60 text-xs">We've also sent a copy to your email.</p>
+          </div>
+        )}
+
+        {pStatus === "error" && (
+          <div>
+            <p className="text-red-400 text-sm mb-3">{pError}</p>
+            <button
+              onClick={() => setPStatus("collecting")}
+              className="text-kmpr-teal text-xs hover:underline"
+            >
+              Try again
+            </button>
+          </div>
+        )}
       </div>
 
       <button
@@ -227,10 +334,14 @@ function SavingsPanel({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function BillUploadCalculator() {
-  const [status, setStatus]   = useState<Status>("idle");
-  const [msgIdx, setMsgIdx]   = useState(0);
-  const [error, setError]     = useState<string | null>(null);
-  const [vals, setVals]       = useState<FormVals>({
+  const params = useSearchParams();
+  const [status, setStatus]     = useState<Status>("idle");
+  const [msgIdx, setMsgIdx]     = useState(0);
+  const [error, setError]       = useState<string | null>(null);
+  const [propCompany, setPropCompany]   = useState(() => params.get("company") ?? "");
+  const [propDistrict, setPropDistrict] = useState(() => params.get("district") ?? "");
+  const [propModel, setPropModel]       = useState(() => params.get("model") ?? "Not sure");
+  const [vals, setVals]         = useState<FormVals>({
     kwh_per_month:       100_000,
     tariff_per_unit:     8.00,
     sanctioned_load_kva: null,
@@ -359,7 +470,13 @@ export default function BillUploadCalculator() {
 
         {/* ── Computed ──────────────────────────────────────────────────── */}
         {status === "computed" && (
-          <SavingsPanel vals={vals} onReset={() => setStatus("idle")} />
+          <SavingsPanel
+            vals={vals}
+            proposalCompany={propCompany}
+            proposalDistrict={propDistrict}
+            proposalModel={propModel}
+            onReset={() => setStatus("idle")}
+          />
         )}
 
         {/* ── Error ─────────────────────────────────────────────────────── */}

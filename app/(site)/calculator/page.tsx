@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import BillUploadCalculator from "@/components/superpowers/BillUploadCalculator";
 
@@ -56,7 +57,9 @@ export default function CalculatorPage() {
       {/* ── Calculator ───────────────────────────────────────────────────── */}
       <section className="py-20 bg-kmpr-soft-bg">
         <FadeIn>
-          <BillUploadCalculator />
+          <Suspense fallback={<div className="max-w-2xl mx-auto h-64 bg-white rounded-2xl border border-kmpr-teal/15 animate-pulse" />}>
+            <BillUploadCalculator />
+          </Suspense>
         </FadeIn>
       </section>
 
