@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
-import KwhJourney from "@/components/KwhJourney";
+import KwhJourney from "@/components/superpowers/KwhJourney";
 import TariffTimeMachine from "@/components/superpowers/TariffTimeMachine";
 import SankeyComparison from "@/components/SankeyComparison";
 import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
