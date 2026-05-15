@@ -3,7 +3,7 @@ import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 import KwhJourney from "@/components/KwhJourney";
-import TariffTimeMachine from "@/components/TariffTimeMachine";
+import TariffTimeMachine from "@/components/superpowers/TariffTimeMachine";
 import SankeyComparison from "@/components/SankeyComparison";
 import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
 
