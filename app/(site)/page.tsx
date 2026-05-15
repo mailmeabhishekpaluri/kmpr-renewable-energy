@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
-import LiveGenerationCounter from "@/components/LiveGenerationCounter";
+import LiveGenerationCounter from "@/components/superpowers/LiveGenerationCounter";
 import QualifyTest from "@/components/QualifyTest";
 import FeasibilityForm from "@/components/FeasibilityForm";
 
@@ -23,8 +23,18 @@ async function getPublicCaseStudies(): Promise<CaseStudy[]> {
       }`
     );
   } catch {
-    // Project not yet configured — degrade gracefully
     return [];
+  }
+}
+
+async function getPlantSinceISO(): Promise<string> {
+  try {
+    const data = await sanityClient.fetch<{ plantSinceISO?: string }>(
+      `*[_type == "siteSettings"][0]{ plantSinceISO }`
+    );
+    return data?.plantSinceISO ?? "2024-01-01T00:00:00Z";
+  } catch {
+    return "2024-01-01T00:00:00Z";
   }
 }
 
@@ -67,7 +77,10 @@ const SECTORS = ["Steel", "Pharma", "Cement", "Food Processing", "Tyres", "Texti
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function HomePage() {
-  const caseStudies = await getPublicCaseStudies();
+  const [caseStudies, plantSinceISO] = await Promise.all([
+    getPublicCaseStudies(),
+    getPlantSinceISO(),
+  ]);
 
   return (
     <>
@@ -164,7 +177,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── S3  Live Generation Counter ──────────────────────────────────── */}
-      <LiveGenerationCounter />
+      <LiveGenerationCounter plantSinceISO={plantSinceISO} />
 
       {/* ── S4  The Problem ──────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
