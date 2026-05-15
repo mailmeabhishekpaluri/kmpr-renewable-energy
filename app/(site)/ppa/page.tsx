@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
+import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -208,12 +209,15 @@ export default function PpaPage() {
             <p className="text-white/50 text-sm mb-8">
               Upload a recent electricity bill and we'll model your exact PPA saving — payback period, cumulative saving, and carbon offset.
             </p>
-            <Link
-              href="/calculator"
-              className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
-            >
-              Model my 25-year PPA savings →
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/calculator"
+                className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
+              >
+                Model my 25-year PPA savings →
+              </Link>
+              <WhatsAppCTA context="Interested in PPA model." />
+            </div>
           </FadeIn>
         </div>
       </section>

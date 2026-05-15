@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
+import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -236,12 +237,15 @@ export default function BootPage() {
               Every BOOT engagement is sized and structured to your load profile.
               Let's start with a 30-minute feasibility call.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
-            >
-              Talk to us about a BOOT plant for my facility →
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
+              >
+                Talk to us about a BOOT plant for my facility →
+              </Link>
+              <WhatsAppCTA context="Interested in BOOT model." />
+            </div>
           </FadeIn>
         </div>
       </section>

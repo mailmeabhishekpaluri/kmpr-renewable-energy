@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 import PlantFlythrough from "@/components/PlantFlythrough";
 import { sanityClient } from "@/lib/sanity";
+import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -224,12 +225,15 @@ export default async function PlantPage() {
               Walk the plant floor remotely — panel layout, grid tie-in, metering infrastructure,
               and live generation data — in under 45 minutes.
             </p>
-            <Link
-              href="/contact?reason=plant-tour"
-              className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
-            >
-              Book a virtual plant tour →
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/contact?reason=plant-tour"
+                className="inline-flex items-center gap-2 bg-kmpr-teal hover:bg-kmpr-teal-dark text-white font-semibold px-8 py-4 rounded-full transition-colors text-sm"
+              >
+                Book a virtual plant tour →
+              </Link>
+              <WhatsAppCTA context="I'd like to book a virtual plant tour." />
+            </div>
           </FadeIn>
         </div>
       </section>

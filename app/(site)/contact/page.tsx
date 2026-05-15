@@ -5,6 +5,7 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import ConversationalForm from "@/components/superpowers/ConversationalForm";
 import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
 import { sanityClient } from "@/lib/sanity";
+import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -172,24 +173,15 @@ export default async function ContactPage() {
                   </a>
                 </div>
 
-                {/* WhatsApp QR placeholder */}
+                {/* WhatsApp */}
                 <div className="bg-white rounded-2xl border border-kmpr-teal/15 p-6">
                   <p className="text-kmpr-muted text-xs font-semibold uppercase tracking-widest mb-4">
                     WhatsApp
                   </p>
-                  <div className="flex items-center gap-4">
-                    {/* QR placeholder */}
-                    <div className="w-20 h-20 rounded-xl bg-kmpr-soft-bg border border-kmpr-teal/15 flex items-center justify-center shrink-0">
-                      <svg className="w-8 h-8 text-kmpr-teal/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 18.75h.75v.75h-.75v-.75ZM18.75 13.5h.75v.75h-.75v-.75ZM18.75 18.75h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-kmpr-navy font-semibold text-sm">Scan to message us</p>
-                      <p className="text-kmpr-muted text-xs mt-1 leading-snug">QR code — available soon</p>
-                    </div>
-                  </div>
+                  <p className="text-kmpr-muted text-xs mb-4 leading-snug">
+                    On desktop a QR code appears — scan with your phone to start the conversation instantly.
+                  </p>
+                  <WhatsAppCTA context="Contacting from the KMPR enquiry page." />
                 </div>
 
                 {/* Office address */}

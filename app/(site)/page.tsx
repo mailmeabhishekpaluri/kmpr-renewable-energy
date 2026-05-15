@@ -4,6 +4,7 @@ import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 import LiveGenerationCounter from "@/components/superpowers/LiveGenerationCounter";
 import QualifyTest from "@/components/superpowers/QualifyTest";
 import FeasibilityForm from "@/components/FeasibilityForm";
+import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -129,6 +130,7 @@ export default async function HomePage() {
               >
                 See how it works →
               </Link>
+              <WhatsAppCTA />
             </div>
           </FadeIn>
 
