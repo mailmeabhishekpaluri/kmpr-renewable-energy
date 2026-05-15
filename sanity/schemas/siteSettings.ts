@@ -28,5 +28,20 @@ export default defineType({
       type: "string",
       description: "e.g. 2024-01-01",
     }),
+    defineField({
+      name: "plantSpecs",
+      title: "Plant Specifications",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string" }),
+            defineField({ name: "value", title: "Value", type: "string" }),
+          ],
+          preview: { select: { title: "label", subtitle: "value" } },
+        },
+      ],
+    }),
   ],
 });
