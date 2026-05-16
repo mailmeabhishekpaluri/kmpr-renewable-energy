@@ -1,5 +1,33 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
+
+// ─── Metadata ─────────────────────────────────────────────────────────────────
+
+const _ogParams = "title=40+MW+solar+at+Rs.+4.30%2Funit+in+AP&tag=Open+Access+Solar";
+
+export const metadata: Metadata = {
+  title:       "KMPR Power — Open Access Solar for AP Industries",
+  description: "Rs. 4.30/unit, 25-year fixed tariff. 40 MW Madakasira plant, fully operational. AP industries save Rs. 3–5 crore/year.",
+  alternates:  { canonical: "https://kmprpower.in" },
+  openGraph: {
+    title:       "KMPR Power — Open Access Solar for AP Industries",
+    description: "Rs. 4.30/unit, 25-year fixed tariff. 40 MW Madakasira plant, fully operational.",
+    url:         "https://kmprpower.in",
+    images: [{
+      url:    `/api/og?${_ogParams}`,
+      width:  1200,
+      height: 630,
+      alt:    "KMPR Power — Open Access Solar",
+    }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "KMPR Power — Open Access Solar for AP Industries",
+    description: "Rs. 4.30/unit, 25-year fixed tariff. 40 MW Madakasira plant, fully operational.",
+    images:      [`/api/og?${_ogParams}`],
+  },
+};
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 import LiveGenerationCounter from "@/components/superpowers/LiveGenerationCounter";
 import QualifyTest from "@/components/superpowers/QualifyTest";
