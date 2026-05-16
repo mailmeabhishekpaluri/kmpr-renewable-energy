@@ -8,11 +8,11 @@ import DecisionHelper from "@/components/DecisionHelper";
 export const metadata: Metadata = {
   title:       "PPA vs BOOT — Compare Solar Models",
   description: "Compare KMPR's PPA (26% equity, fixed Rs. 4.30/unit for 25 years) and BOOT (zero upfront, full ownership in 6 years) models to find the right fit for your business.",
-  alternates:  { canonical: "https://kmprpower.in/compare" },
+  alternates:  { canonical: "https://kmprpower.com/compare" },
   openGraph: {
     title:       "PPA vs BOOT — Find the right model for your plant",
     description: "26% equity + 25-year tariff lock vs. full ownership in 6 years. Compare side by side.",
-    url:         "https://kmprpower.in/compare",
+    url:         "https://kmprpower.com/compare",
     images: [{ url: "/api/og?title=Find+the+right+model+for+your+plant&tag=PPA+vs+BOOT", width: 1200, height: 630, alt: "PPA vs BOOT Comparison" }],
   },
   twitter: {

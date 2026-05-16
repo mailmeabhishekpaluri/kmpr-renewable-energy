@@ -104,7 +104,7 @@ export async function GET(req: NextRequest) {
               <span style={{ fontSize: 16, color: "rgba(255,255,255,0.5)" }}>25 years fixed</span>
             </div>
             <span style={{ fontSize: 15, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em" }}>
-              kmprpower.in
+              kmprpower.com
             </span>
           </div>
         </div>

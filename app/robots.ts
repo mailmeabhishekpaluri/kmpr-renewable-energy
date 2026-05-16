@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow:     "/",
       disallow:  "/studio/",
     },
-    sitemap: "https://kmprpower.in/sitemap.xml",
+    sitemap: "https://kmprpower.com/sitemap.xml",
   };
 }

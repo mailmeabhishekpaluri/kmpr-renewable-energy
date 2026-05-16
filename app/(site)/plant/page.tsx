@@ -10,11 +10,11 @@ import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 export const metadata: Metadata = {
   title:       "Madakasira Solar Plant — 40 MW Open Access in Andhra Pradesh",
   description: "KMPR's 40 MW grid-connected solar plant in Madakasira, Anantapur District, Andhra Pradesh. Fully commissioned, 33 kV grid connection, 1,300+ acres reserved for 100–200 MW expansion.",
-  alternates:  { canonical: "https://kmprpower.in/plant" },
+  alternates:  { canonical: "https://kmprpower.com/plant" },
   openGraph: {
     title:       "Madakasira Plant — 40 MW fully operational in AP",
     description: "40 MW grid-connected solar. 33 kV. 1,300+ acres for 100–200 MW Phase 2 expansion.",
-    url:         "https://kmprpower.in/plant",
+    url:         "https://kmprpower.com/plant",
     images: [{ url: "/api/og?title=40+MW+fully+operational+in+AP&tag=Madakasira+Plant", width: 1200, height: 630, alt: "Madakasira 40 MW Solar Plant" }],
   },
   twitter: {

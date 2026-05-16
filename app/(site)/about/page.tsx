@@ -7,11 +7,11 @@ import { FadeIn, FadeInStagger, FadeInItem } from "@/components/ui/FadeIn";
 export const metadata: Metadata = {
   title:       "About KMPR Power — Founded by a CA and a Chief Engineer",
   description: "KMPR Power owns and operates a 40 MW solar plant in Madakasira, AP. Founded by CA PAN Krishna and Chief Engineer Prasad Raju Muppala. Backed by Ananta Solar Company.",
-  alternates:  { canonical: "https://kmprpower.in/about" },
+  alternates:  { canonical: "https://kmprpower.com/about" },
   openGraph: {
     title:       "About KMPR — Founded by a CA and a Chief Engineer",
     description: "PAN Krishna (CA, 20+ yrs steel) and Prasad Raju Muppala (31 yrs APSEB, Chief Engineer). Backed by Ananta Solar.",
-    url:         "https://kmprpower.in/about",
+    url:         "https://kmprpower.com/about",
     images: [{ url: "/api/og?title=Founded+by+a+CA+and+a+Chief+Engineer&tag=About+KMPR", width: 1200, height: 630, alt: "About KMPR Power" }],
   },
   twitter: {

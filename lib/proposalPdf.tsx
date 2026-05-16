@@ -638,7 +638,7 @@ function ContactPage({ data }: { data: ProposalData }) {
           ["Director",    "PAN Krishna — Co-Founder & Director"],
           ["Phone",       "+91 98765 43210"],
           ["Email",       "info@kmprpower.in"],
-          ["Website",     "kmprpower.in"],
+          ["Website",     "kmprpower.com"],
           ["Office",      "#2112, 9th Main, D Block, Sahakaranagar, Bengaluru 560092"],
           ["Plant",       "Madakasira, Anantapur District, Andhra Pradesh 515581"],
         ].map(([label, val]) => (
@@ -664,7 +664,7 @@ function ContactPage({ data }: { data: ProposalData }) {
       {/* Bottom band */}
       <View style={{ position: "absolute", bottom: 0, left: 0, right: 0, backgroundColor: C.teal, paddingVertical: 14, paddingHorizontal: 40 }}>
         <Text style={{ fontSize: 9, color: C.white, fontFamily: "Helvetica-Bold", textAlign: "center" }}>
-          KMPR Power · Open Access Solar for AP Industries · kmprpower.in
+          KMPR Power · Open Access Solar for AP Industries · kmprpower.com
         </Text>
       </View>
     </Page>

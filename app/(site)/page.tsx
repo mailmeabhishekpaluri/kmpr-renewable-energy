@@ -9,11 +9,11 @@ const _ogParams = "title=40+MW+solar+at+Rs.+4.30%2Funit+in+AP&tag=Open+Access+So
 export const metadata: Metadata = {
   title:       "KMPR Power — Open Access Solar for AP Industries",
   description: "Rs. 4.30/unit, 25-year fixed tariff. 40 MW Madakasira plant, fully operational. AP industries save Rs. 3–5 crore/year.",
-  alternates:  { canonical: "https://kmprpower.in" },
+  alternates:  { canonical: "https://kmprpower.com" },
   openGraph: {
     title:       "KMPR Power — Open Access Solar for AP Industries",
     description: "Rs. 4.30/unit, 25-year fixed tariff. 40 MW Madakasira plant, fully operational.",
-    url:         "https://kmprpower.in",
+    url:         "https://kmprpower.com",
     images: [{
       url:    `/api/og?${_ogParams}`,
       width:  1200,

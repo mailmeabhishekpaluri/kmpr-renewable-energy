@@ -9,11 +9,11 @@ import BillUploadCalculator from "@/components/superpowers/BillUploadCalculator"
 export const metadata: Metadata = {
   title:       "Solar Savings Calculator — Upload Your Electricity Bill",
   description: "Upload your AP industrial electricity bill. KMPR's AI extracts your tariff and models 25 years of savings at Rs. 4.30/unit in seconds.",
-  alternates:  { canonical: "https://kmprpower.in/calculator" },
+  alternates:  { canonical: "https://kmprpower.com/calculator" },
   openGraph: {
     title:       "Model 25 years of savings in 60 seconds",
     description: "Upload your AP electricity bill. AI reads your tariff and shows your exact 25-year saving.",
-    url:         "https://kmprpower.in/calculator",
+    url:         "https://kmprpower.com/calculator",
     images: [{ url: "/api/og?title=Model+25+years+of+savings+in+60+seconds&tag=Savings+Calculator", width: 1200, height: 630, alt: "KMPR Savings Calculator" }],
   },
   twitter: {

@@ -2,7 +2,7 @@
 import type { MetadataRoute } from "next";
 import { sanityClient } from "@/lib/sanity";
 
-const SITE = "https://kmprpower.in";
+const SITE = "https://kmprpower.com";
 
 const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: SITE,                          priority: 1.0, changeFrequency: "weekly",  lastModified: new Date() },

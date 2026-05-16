@@ -9,7 +9,7 @@ const manrope = Manrope({
   weight: ["400", "500", "700"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kmprpower.in";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kmprpower.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

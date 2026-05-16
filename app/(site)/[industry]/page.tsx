@@ -67,7 +67,7 @@ export async function generateMetadata({
 
   const title       = `Solar PPA for ${doc.label} in Andhra Pradesh`;
   const description = doc.hero.subheadline;
-  const canonical   = `https://kmprpower.in/${slug}`;
+  const canonical   = `https://kmprpower.com/${slug}`;
   const ogTitle     = `Solar power for ${doc.label} in AP`;
   const ogImageUrl  = `/api/og?title=${encodeURIComponent(ogTitle)}&tag=${encodeURIComponent(doc.label)}`;
 
@@ -173,7 +173,7 @@ export default async function IndustryPage({
     provider: {
       "@type": "Organization",
       name: "KMPR Power",
-      url: "https://kmprpower.in",
+      url: "https://kmprpower.com",
     },
     areaServed: { "@type": "State", name: "Andhra Pradesh, India" },
     serviceType: "Solar Power Purchase Agreement",

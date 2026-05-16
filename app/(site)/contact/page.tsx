@@ -12,11 +12,11 @@ import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 export const metadata: Metadata = {
   title:       "Contact KMPR Power — Start Your Solar Feasibility Enquiry",
   description: "Talk to KMPR's founders about open access solar for your facility. We respond to all feasibility enquiries within 4 working hours.",
-  alternates:  { canonical: "https://kmprpower.in/contact" },
+  alternates:  { canonical: "https://kmprpower.com/contact" },
   openGraph: {
     title:       "Check your eligibility — KMPR responds in 4 hours",
     description: "Talk to KMPR's founders. Feasibility review: zero cost, 48-hour turnaround.",
-    url:         "https://kmprpower.in/contact",
+    url:         "https://kmprpower.com/contact",
     images: [{ url: "/api/og?title=Check+your+eligibility+in+4+hours&tag=Get+Started", width: 1200, height: 630, alt: "Contact KMPR Power" }],
   },
   twitter: {
