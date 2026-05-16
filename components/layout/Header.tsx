@@ -102,16 +102,18 @@ export default function Header({ slotsFilled = 3, slotsTotal = 7 }: HeaderProps)
                     </svg>
                   </button>
                   {modelsOpen && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-kmpr-navy border border-white/10 rounded-xl shadow-2xl py-1.5 w-40">
-                      {item.dropdown.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className="block px-4 py-2 text-sm text-white/75 hover:text-white hover:bg-white/5 transition-colors"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-40">
+                      <div className="bg-kmpr-navy border border-white/10 rounded-xl shadow-2xl py-1.5">
+                        {item.dropdown.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            className="block px-4 py-2 text-sm text-white/75 hover:text-white hover:bg-white/5 transition-colors"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
