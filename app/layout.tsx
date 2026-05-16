@@ -4,7 +4,7 @@ import { Manrope } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-TZ5HELQRX1";
 
 const manrope = Manrope({
   variable: "--font-manrope",
