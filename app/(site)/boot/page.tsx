@@ -6,9 +6,21 @@ import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "BOOT Model (Build Own Operate Transfer) — Own Your Solar Plant in 6 Years | KMPR Power",
-  description:
-    "KMPR builds and finances your solar plant. Pay your current electricity bill to us for 6 years, then own the asset outright. 20+ years of near-free clean power after transfer.",
+  title:       "BOOT Model — Own Your Solar Plant in 6 Years",
+  description: "KMPR builds and finances your solar plant. Pay your current electricity bill to us for 6 years, then own the asset outright. 20+ years of near-free clean power after transfer.",
+  alternates:  { canonical: "https://kmprpower.in/boot" },
+  openGraph: {
+    title:       "BOOT Model — Own your solar plant in 6 years",
+    description: "KMPR builds and finances your plant. Pay your current bill for 6 years, then own the asset outright.",
+    url:         "https://kmprpower.in/boot",
+    images: [{ url: "/api/og?title=Own+your+solar+plant+in+6+years&tag=BOOT+Model", width: 1200, height: 630, alt: "KMPR BOOT Model" }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "BOOT Model — Own your solar plant in 6 years",
+    description: "KMPR builds and finances your plant. Pay your current bill for 6 years, then own the asset outright.",
+    images:      ["/api/og?title=Own+your+solar+plant+in+6+years&tag=BOOT+Model"],
+  },
 };
 
 // ─── Static content ───────────────────────────────────────────────────────────

@@ -6,9 +6,21 @@ import { sanityClient } from "@/lib/sanity";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Track Record — Industrial Clients & Promoter Portfolio | KMPR Power",
-  description:
-    "KMPR's active industrial clients and Mr. Prasad Raju Muppala's open-access portfolio spanning Strides Pharma, Nestle, Orient Cement, J&K Tyres, and 12+ other industrial consumers across South India.",
+  title:       "Track Record — Industrial Clients & Promoter Portfolio",
+  description: "KMPR's active industrial clients and Mr. Prasad Raju Muppala's open-access portfolio spanning Strides Pharma, Nestle, Orient Cement, J&K Tyres, and 12+ other industrial consumers across South India.",
+  alternates:  { canonical: "https://kmprpower.in/track-record" },
+  openGraph: {
+    title:       "Track Record — Real clients. Real savings.",
+    description: "Strides Pharma, Orient Cement, Nestle, J&K Tyres and 12+ others on open access solar.",
+    url:         "https://kmprpower.in/track-record",
+    images: [{ url: "/api/og?title=Real+clients.+Real+savings.&tag=Track+Record", width: 1200, height: 630, alt: "KMPR Track Record" }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "Track Record — Real clients. Real savings.",
+    description: "Strides Pharma, Orient Cement, Nestle, J&K Tyres and 12+ others on open access solar.",
+    images:      ["/api/og?title=Real+clients.+Real+savings.&tag=Track+Record"],
+  },
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────

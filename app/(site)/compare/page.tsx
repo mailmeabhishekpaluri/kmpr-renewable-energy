@@ -6,9 +6,21 @@ import DecisionHelper from "@/components/DecisionHelper";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "PPA vs BOOT — Compare Solar Models | KMPR Power",
-  description:
-    "Compare KMPR's PPA (26% equity, fixed Rs. 4.30/unit for 25 years) and BOOT (zero upfront, full ownership in 6 years) models to find the right fit for your business.",
+  title:       "PPA vs BOOT — Compare Solar Models",
+  description: "Compare KMPR's PPA (26% equity, fixed Rs. 4.30/unit for 25 years) and BOOT (zero upfront, full ownership in 6 years) models to find the right fit for your business.",
+  alternates:  { canonical: "https://kmprpower.in/compare" },
+  openGraph: {
+    title:       "PPA vs BOOT — Find the right model for your plant",
+    description: "26% equity + 25-year tariff lock vs. full ownership in 6 years. Compare side by side.",
+    url:         "https://kmprpower.in/compare",
+    images: [{ url: "/api/og?title=Find+the+right+model+for+your+plant&tag=PPA+vs+BOOT", width: 1200, height: 630, alt: "PPA vs BOOT Comparison" }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "PPA vs BOOT — Find the right model for your plant",
+    description: "26% equity + 25-year tariff lock vs. full ownership in 6 years. Compare side by side.",
+    images:      ["/api/og?title=Find+the+right+model+for+your+plant&tag=PPA+vs+BOOT"],
+  },
 };
 
 // ─── Static content ───────────────────────────────────────────────────────────

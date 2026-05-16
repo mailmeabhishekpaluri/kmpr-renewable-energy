@@ -6,9 +6,21 @@ import WhatsAppCTA from "@/components/superpowers/WhatsAppCTA";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "PPA Model — 26% Co-Investment, Rs. 4.30/unit for 25 Years | KMPR Power",
-  description:
-    "Become a 26% co-investor in KMPR's 40 MW solar plant. Recover equity in 9 months from bill savings. Fixed Rs. 4.30/unit tariff for 25 years in Andhra Pradesh.",
+  title:       "PPA Model — 26% Co-Investment, Rs. 4.30/unit for 25 Years",
+  description: "Become a 26% co-investor in KMPR's 40 MW solar plant. Recover equity in 9 months from bill savings. Fixed Rs. 4.30/unit tariff for 25 years in Andhra Pradesh.",
+  alternates:  { canonical: "https://kmprpower.in/ppa" },
+  openGraph: {
+    title:       "PPA Model — 26% equity, 9-month payback, 25-year tariff lock",
+    description: "Become a 26% co-investor in KMPR's 40 MW solar plant. Recover equity in 9 months.",
+    url:         "https://kmprpower.in/ppa",
+    images: [{ url: "/api/og?title=26%25+equity.+25-year+fixed+tariff.&tag=PPA+Model", width: 1200, height: 630, alt: "KMPR PPA Model" }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "PPA Model — 26% equity, 9-month payback, 25-year tariff lock",
+    description: "Become a 26% co-investor in KMPR's 40 MW solar plant. Recover equity in 9 months.",
+    images:      ["/api/og?title=26%25+equity.+25-year+fixed+tariff.&tag=PPA+Model"],
+  },
 };
 
 // ─── Static content ───────────────────────────────────────────────────────────

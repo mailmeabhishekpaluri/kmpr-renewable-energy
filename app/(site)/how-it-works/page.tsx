@@ -10,9 +10,21 @@ import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "How Open Access Solar Works in Andhra Pradesh | KMPR Power",
-  description:
-    "Open access lets AP industries buy solar power directly at Rs. 4.30/unit, bypassing Discom. Here's exactly how — at 33 kV, with zero wheeling charges.",
+  title:       "How Open Access Solar Works in Andhra Pradesh",
+  description: "Open access lets AP industries buy solar power directly at Rs. 4.30/unit, bypassing Discom. Here's exactly how — at 33 kV, with zero wheeling charges.",
+  alternates:  { canonical: "https://kmprpower.in/how-it-works" },
+  openGraph: {
+    title:       "How Open Access Solar Works in Andhra Pradesh",
+    description: "Open access lets AP industries buy solar power directly at Rs. 4.30/unit, bypassing Discom. Here's exactly how.",
+    url:         "https://kmprpower.in/how-it-works",
+    images: [{ url: "/api/og?title=How+open+access+solar+works&tag=How+It+Works", width: 1200, height: 630, alt: "How Open Access Solar Works" }],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "How Open Access Solar Works in Andhra Pradesh",
+    description: "Open access lets AP industries buy solar power directly at Rs. 4.30/unit, bypassing Discom.",
+    images:      ["/api/og?title=How+open+access+solar+works&tag=How+It+Works"],
+  },
 };
 
 // ─── Static content ───────────────────────────────────────────────────────────
