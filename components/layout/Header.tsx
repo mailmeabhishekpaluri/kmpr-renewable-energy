@@ -15,9 +15,9 @@ const NAV = [
     label: "Our Models",
     href: "#",
     dropdown: [
-      { label: "PPA", href: "/models/ppa" },
-      { label: "BOOT", href: "/models/boot" },
-      { label: "Compare", href: "/models/compare" },
+      { label: "PPA", href: "/ppa" },
+      { label: "BOOT", href: "/boot" },
+      { label: "Compare", href: "/compare" },
     ],
   },
   { label: "Plant & Track Record", href: "/plant" },

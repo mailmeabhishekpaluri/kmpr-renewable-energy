@@ -90,7 +90,7 @@ export default function PpaPage() {
               <ol className="flex items-center gap-2 text-xs text-white/40">
                 <li><Link href="/" className="hover:text-white/70 transition-colors">Home</Link></li>
                 <li aria-hidden="true" className="text-white/20">›</li>
-                <li><Link href="/models/compare" className="hover:text-white/70 transition-colors">Models</Link></li>
+                <li><Link href="/compare" className="hover:text-white/70 transition-colors">Models</Link></li>
                 <li aria-hidden="true" className="text-white/20">›</li>
                 <li className="text-white/60">PPA</li>
               </ol>
