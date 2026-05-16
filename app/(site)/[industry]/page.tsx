@@ -62,10 +62,31 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { industry: slug } = await params;
   const doc = await getIndustry(slug);
+
   if (!doc) return { title: "Industry | KMPR Power" };
+
+  const title       = `Solar PPA for ${doc.label} in Andhra Pradesh`;
+  const description = doc.hero.subheadline;
+  const canonical   = `https://kmprpower.in/${slug}`;
+  const ogTitle     = `Solar power for ${doc.label} in AP`;
+  const ogImageUrl  = `/api/og?title=${encodeURIComponent(ogTitle)}&tag=${encodeURIComponent(doc.label)}`;
+
   return {
-    title: `Solar PPA for ${doc.label} in Andhra Pradesh | KMPR Power`,
-    description: doc.hero.subheadline,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card:        "summary_large_image",
+      title,
+      description,
+      images:      [ogImageUrl],
+    },
   };
 }
 
